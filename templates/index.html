@@ -1,0 +1,50 @@
+{%extends 'base.html'%} {%block head %}
+<title>Flask project demo</title>
+{%endblock%} {%block body%}
+
+<div class="container">
+  <div class="content-part shadow">
+    <h1>Welcome to my first flask project</h1>
+    {%if tasks|length < 1%}
+    <h4 class="text-center text-danger">
+      There is no tasks. Create one below!
+    </h4>
+    {%else%}
+    <table class="table table-striped">
+      <thead>
+        <th>TaskID</th>
+        <th>Task Name</th>
+        <th>Added</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        {%for task in tasks%}
+        <tr>
+          <td>{{task.id}}</td>
+          <td>{{task.content}}</td>
+          <td>{{task.date_created.date()}}</td>
+          <td>
+            <a href="/delete/{{task.id}}">Delete</a>
+            <br />
+            <a href="/update/{{task.id}}">Update</a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    {%endif%}
+  </div>
+
+  <section class="shadow p-3">
+    <form action="" method="POST">
+      <h1 class="mt-4">Add Task Form</h1>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <input type="text" class="form-control" name="content" id="content" />
+      </div>
+      <button class="btn btn-success" type="submit">Add Task</button>
+    </form>
+  </section>
+</div>
+
+{%endblock%}

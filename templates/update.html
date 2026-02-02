@@ -1,0 +1,24 @@
+{%extends 'base.html'%} {%block head %}
+<title>Flask project demo | Update Task</title>
+{%endblock%} {%block body%}
+
+<div class="container">
+  <section class="shadow p-3">
+    <form action="" method="POST">
+      <h1 class="mt-4">Update Task Form</h1>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <input
+          type="text"
+          value="{{task.content}}"
+          class="form-control"
+          name="content"
+          id="content"
+        />
+      </div>
+      <button class="btn btn-success" type="submit">Update Task</button>
+    </form>
+  </section>
+</div>
+
+{%endblock%}
